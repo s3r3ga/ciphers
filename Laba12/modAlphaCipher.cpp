@@ -1,6 +1,7 @@
 #include "modAlphaCipher.h"
 #include <vector>
 #include <algorithm>
+#include <cctype>
 using namespace std;
 
 modAlphaCipher::modAlphaCipher(int k)
@@ -13,11 +14,27 @@ modAlphaCipher::modAlphaCipher(int k)
 
 string modAlphaCipher::encrypt(const string& plain_text)
 {
-    string text = removeSpaces(plain_text);
-    
-    if (text.empty()) {
+    // Текст уже без пробелов, проверяем только на пустоту
+    if (plain_text.empty()) {
         return "";
     }
+    
+    // Проверяем и преобразуем в верхний регистр
+    string upper_text;
+    for (char c : plain_text) {
+        if (isalpha(c)) {
+            // Проверяем, что символ английский
+            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+                upper_text += toupper(c);
+            } else {
+                throw invalid_argument("Текст содержит неанглийские символы. Разрешены только буквы английского алфавита.");
+            }
+        } else {
+            throw invalid_argument("Текст содержит небуквенные символы. Разрешены только буквы английского алфавита.");
+        }
+    }
+    
+    string text = upper_text;
     
     // Определяем количество строк
     size_t text_len = text.length();
@@ -36,7 +53,7 @@ string modAlphaCipher::encrypt(const string& plain_text)
         }
     }
     
-    // сверху вниз, справа налево
+    // ЧТЕНИЕ: сверху вниз, справа налево
     string result;
     for (int j = key - 1; j >= 0; j--) {
         for (size_t i = 0; i < rows; i++) {
@@ -51,11 +68,27 @@ string modAlphaCipher::encrypt(const string& plain_text)
 
 string modAlphaCipher::decrypt(const string& cipher_text)
 {
-    string text = removeSpaces(cipher_text);
-    
-    if (text.empty()) {
+    // Текст уже без пробелов, проверяем только на пустоту
+    if (cipher_text.empty()) {
         return "";
     }
+    
+    // Проверяем и преобразуем в верхний регистр
+    string upper_text;
+    for (char c : cipher_text) {
+        if (isalpha(c)) {
+            // Проверяем, что символ английский
+            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+                upper_text += toupper(c);
+            } else {
+                throw invalid_argument("Текст содержит неанглийские символы. Разрешены только буквы английского алфавита.");
+            }
+        } else {
+            throw invalid_argument("Текст содержит небуквенные символы. Разрешены только буквы английского алфавита.");
+        }
+    }
+    
+    string text = upper_text;
     
     // Определяем количество строк
     size_t text_len = text.length();
@@ -84,17 +117,6 @@ string modAlphaCipher::decrypt(const string& cipher_text)
         }
     }
     
-    return result;
-}
-
-string modAlphaCipher::removeSpaces(const string& text)
-{
-    string result;
-    for (char c : text) {
-        if (c != ' ') {
-            result += c;
-        }
-    }
     return result;
 }
 
