@@ -1,6 +1,7 @@
 #include "modAlphaCipher.h"
 #include <stdexcept>
 #include <iostream>
+#include <algorithm>
 
 modAlphaCipher::modAlphaCipher(const std::wstring& skey)
 {
@@ -81,6 +82,10 @@ std::wstring modAlphaCipher::to_upper(const std::wstring& s)
             result[i] = upper[pos];
         }
     }
+    
+    // Удаляем пробелы из результата
+    result.erase(std::remove(result.begin(), result.end(), L' '), result.end());
+    
     return result;
 }
 
