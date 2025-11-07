@@ -41,7 +41,7 @@ int main()
     std::wstring text;
     int op;
     
-    std::wcout << L"Шифратор готов. Введите ключ (заглавные русские буквы): ";
+    std::wcout << L"Шифратор готов. Введите ключ (только русские буквы): ";
     std::getline(std::wcin, key);
     
     // Удаляем пробелы из ключа
@@ -59,7 +59,7 @@ int main()
             if (op > 2) {
                 std::wcout << L"Неверная операция!" << std::endl;
             } else if (op > 0) {
-                std::wcout << L"Введите текст (заглавные русские буквы): ";
+                std::wcout << L"Введите текст (только русские буквы): ";
                 std::getline(std::wcin, text);
                 
                 // Удаляем пробелы из текста
@@ -81,7 +81,7 @@ int main()
         
     } catch (const std::exception& e) {
         std::wcout << L"Ошибка инициализации: " << e.what() << std::endl;
-        std::wcout << L"Пожалуйста, используйте только заглавные русские буквы." << std::endl;
+        std::wcout << L"Пожалуйста, используйте только русские буквы." << std::endl;
         return 1;
     }
     
