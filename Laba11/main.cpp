@@ -2,6 +2,7 @@
 #include <string>
 #include <locale>
 #include <codecvt>
+#include <algorithm>
 #include "modAlphaCipher.h"
 
 // Функция для преобразования string в wstring
@@ -14,6 +15,13 @@ std::wstring string_to_wstring(const std::string& str) {
 std::string wstring_to_string(const std::wstring& wstr) {
     std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
     return converter.to_bytes(wstr);
+}
+
+// Функция для удаления пробелов из строки
+std::wstring remove_spaces(const std::wstring& str) {
+    std::wstring result = str;
+    result.erase(std::remove(result.begin(), result.end(), L' '), result.end());
+    return result;
 }
 
 int main()
@@ -36,6 +44,9 @@ int main()
     std::wcout << L"Шифратор готов. Введите ключ (заглавные русские буквы): ";
     std::getline(std::wcin, key);
     
+    // Удаляем пробелы из ключа
+    key = remove_spaces(key);
+    
     try {
         modAlphaCipher cipher(key);
         std::wcout << L"Ключ загружен успешно." << std::endl;
@@ -50,6 +61,9 @@ int main()
             } else if (op > 0) {
                 std::wcout << L"Введите текст (заглавные русские буквы): ";
                 std::getline(std::wcin, text);
+                
+                // Удаляем пробелы из текста
+                text = remove_spaces(text);
                 
                 try {
                     if (op == 1) {
