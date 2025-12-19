@@ -1,0 +1,114 @@
+\hypertarget{main_8cpp}{}\doxysection{Файл main.\+cpp}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Главный файл программы шифрования методом маршрутной перестановки  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$locale$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include \char`\"{}mod\+Alpha\+Cipher.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{main_8cpp_a8491b47f8b7429428316b35872ef1542}{remove\+Spaces}} (const string \&str)
+\begin{DoxyCompactList}\small\item\em Удаляет пробелы из строки \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Главная функция программы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Главный файл программы шифрования методом маршрутной перестановки 
+
+Содержит пользовательский интерфейс для работы с шифром \begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+2025 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Автор}
+Ходжаев С.\+А. 
+\end{DoxyAuthor}
+
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Главная функция программы 
+
+\begin{DoxyReturn}{Возвращает}
+Код завершения (0 -\/ успешно, 1 -\/ ошибка)
+\end{DoxyReturn}
+Программа предоставляет интерактивный интерфейс для\+:
+\begin{DoxyEnumerate}
+\item Ввода ключа (положительного числа)
+\item Выбора операции (шифрование/дешифрование/выход)
+\item Ввода текста для обработки
+\item Вывода результатов
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Заметки}
+Программа работает только с английским алфавитом 
+\end{DoxyNote}
+\begin{DoxyWarning}{Предупреждения}
+Ключ должен быть положительным числом 
+\end{DoxyWarning}
+\texorpdfstring{$<$}{<} Ключ шифрования (количество столбцов)
+
+\texorpdfstring{$<$}{<} Текст для обработки
+
+\texorpdfstring{$<$}{<} Выбранная операция
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00045}{45}}
+
+
+
+Перекрестные ссылки \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00093}{mod\+Alpha\+Cipher\+::decrypt()}}, \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00034}{mod\+Alpha\+Cipher\+::encrypt()}}, \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00170}{mod\+Alpha\+Cipher\+::get\+Key()}} и \mbox{\hyperlink{main_8cpp_source_l00026}{remove\+Spaces()}}.
+
+\mbox{\Hypertarget{main_8cpp_a8491b47f8b7429428316b35872ef1542}\label{main_8cpp_a8491b47f8b7429428316b35872ef1542}} 
+\index{main.cpp@{main.cpp}!removeSpaces@{removeSpaces}}
+\index{removeSpaces@{removeSpaces}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{removeSpaces()}{removeSpaces()}}
+{\footnotesize\ttfamily string remove\+Spaces (\begin{DoxyParamCaption}\item[{const string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Удаляет пробелы из строки 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em str} & Входная строка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Строка без пробелов
+\end{DoxyReturn}
+Функция использует алгоритм remove-\/erase для удаления всех пробелов из строки. 
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00026}{26}}
+
+
+
+Используется в \mbox{\hyperlink{main_8cpp_source_l00045}{main()}}.
+

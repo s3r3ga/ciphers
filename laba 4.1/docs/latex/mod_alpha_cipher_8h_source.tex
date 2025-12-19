@@ -1,0 +1,37 @@
+\hypertarget{mod_alpha_cipher_8h_source}{}\doxysection{mod\+Alpha\+Cipher.\+h}
+\mbox{\hyperlink{mod_alpha_cipher_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00010}00010 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00014}00014 \textcolor{preprocessor}{\#include <locale>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00015}00015 \textcolor{preprocessor}{\#include <codecvt>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00024}\mbox{\hyperlink{classmod_alpha_cipher}{00024}} \textcolor{keyword}{class }\mbox{\hyperlink{classmod_alpha_cipher}{modAlphaCipher}}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00025}00025 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00026}00026 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00027}00027     std::wstring numAlpha = L\textcolor{stringliteral}{"{}АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"{}}; }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00028}00028     std::map<wchar\_t, int> alphaNum; }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00029}00029     std::vector<int> key; }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00030}00030     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00037}00037     std::vector<int> convert(\textcolor{keyword}{const} std::wstring\& s);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00038}00038     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00045}00045     std::wstring convert(\textcolor{keyword}{const} std::vector<int>\& v);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00046}00046     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00052}00052     std::wstring to\_upper(\textcolor{keyword}{const} std::wstring\& s);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00053}00053     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00059}00059     \textcolor{keywordtype}{bool} isValid(\textcolor{keyword}{const} std::wstring\& s);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00060}00060     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00061}00061 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00066}\mbox{\hyperlink{classmod_alpha_cipher_a4f0a86c20f5d836f66cb1e640d875e6b}{00066}}     \mbox{\hyperlink{classmod_alpha_cipher_a4f0a86c20f5d836f66cb1e640d875e6b}{modAlphaCipher}}() = \textcolor{keyword}{delete};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00067}00067     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00073}00073     \mbox{\hyperlink{classmod_alpha_cipher_a4f0a86c20f5d836f66cb1e640d875e6b}{modAlphaCipher}}(\textcolor{keyword}{const} std::wstring\& skey);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00074}00074     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00081}00081     std::wstring \mbox{\hyperlink{classmod_alpha_cipher_a5edc499881373a275a3cd14f0cab6c19}{encrypt}}(\textcolor{keyword}{const} std::wstring\& open\_text);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00082}00082     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00089}00089     std::wstring \mbox{\hyperlink{classmod_alpha_cipher_a941eab79d9ec1a8de4e1f9cf2a80ff35}{decrypt}}(\textcolor{keyword}{const} std::wstring\& cipher\_text);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8h_source_l00090}00090 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,106 @@
+\hypertarget{mod_alpha_cipher_8cpp_source}{}\doxysection{mod\+Alpha\+Cipher.\+cpp}
+\mbox{\hyperlink{mod_alpha_cipher_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mod_alpha_cipher_8h}{modAlphaCipher.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00020}\mbox{\hyperlink{classmod_alpha_cipher_a314fca132f4e74faca280b7c1fad7cb5}{00020}} \mbox{\hyperlink{classmod_alpha_cipher_a4f0a86c20f5d836f66cb1e640d875e6b}{modAlphaCipher::modAlphaCipher}}(\textcolor{keyword}{const} std::wstring\& skey)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00021}00021 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00022}00022     \textcolor{comment}{// Инициализируем алфавит и создаем карту символов}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00023}00023     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < numAlpha.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00024}00024         alphaNum[numAlpha[i]] = i;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00025}00025     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00026}00026     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00027}00027     std::wstring upper\_key = to\_upper(skey);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00028}00028     \textcolor{keywordflow}{if} (!isValid(upper\_key)) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00029}00029         \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}Ключ содержит недопустимые символы"{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00031}00031     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00032}00032     key = convert(upper\_key);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00033}00033 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00048}\mbox{\hyperlink{classmod_alpha_cipher_a5edc499881373a275a3cd14f0cab6c19}{00048}} std::wstring \mbox{\hyperlink{classmod_alpha_cipher_a5edc499881373a275a3cd14f0cab6c19}{modAlphaCipher::encrypt}}(\textcolor{keyword}{const} std::wstring\& open\_text)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00050}00050     std::wstring text = to\_upper(open\_text);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00051}00051     \textcolor{keywordflow}{if} (!isValid(text)) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00052}00052         \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}Текст содержит недопустимые символы"{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00053}00053     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00054}00054     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00055}00055     std::vector<int> work = convert(text);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00056}00056     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < work.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00057}00057         work[i] = (work[i] + key[i \% key.size()]) \% numAlpha.size();}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00058}00058     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00059}00059     \textcolor{keywordflow}{return} convert(work);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00060}00060 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00075}\mbox{\hyperlink{classmod_alpha_cipher_a941eab79d9ec1a8de4e1f9cf2a80ff35}{00075}} std::wstring \mbox{\hyperlink{classmod_alpha_cipher_a941eab79d9ec1a8de4e1f9cf2a80ff35}{modAlphaCipher::decrypt}}(\textcolor{keyword}{const} std::wstring\& cipher\_text)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00076}00076 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00077}00077     std::wstring text = to\_upper(cipher\_text);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00078}00078     \textcolor{keywordflow}{if} (!isValid(text)) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00079}00079         \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}Текст содержит недопустимые символы"{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00080}00080     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00081}00081     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00082}00082     std::vector<int> work = convert(text);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00083}00083     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < work.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00084}00084         work[i] = (work[i] + numAlpha.size() -\/ key[i \% key.size()]) \% numAlpha.size();}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00086}00086     \textcolor{keywordflow}{return} convert(work);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00087}00087 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00095}00095 std::vector<int> modAlphaCipher::convert(\textcolor{keyword}{const} std::wstring\& s)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00096}00096 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00097}00097     std::vector<int> result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00098}00098     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{wchar\_t} c : s) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00099}00099         \textcolor{keywordflow}{if} (alphaNum.find(c) == alphaNum.end()) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00100}00100             \textcolor{keywordflow}{throw} std::invalid\_argument(\textcolor{stringliteral}{"{}Недопустимый символ в тексте"{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00101}00101         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00102}00102         result.push\_back(alphaNum[c]);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00103}00103     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00104}00104     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00105}00105 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00113}00113 std::wstring modAlphaCipher::convert(\textcolor{keyword}{const} std::vector<int>\& v)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00114}00114 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00115}00115     std::wstring result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00116}00116     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i : v) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00117}00117         \textcolor{keywordflow}{if} (i < 0 || i >= \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(numAlpha.size())) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00118}00118             \textcolor{keywordflow}{throw} std::out\_of\_range(\textcolor{stringliteral}{"{}Индекс выходит за границы алфавита"{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00119}00119         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00120}00120         result += numAlpha[i];}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00121}00121     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00122}00122     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00123}00123 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00130}00130 std::wstring modAlphaCipher::to\_upper(\textcolor{keyword}{const} std::wstring\& s)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00131}00131 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00132}00132     std::wstring result = s;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00133}00133     std::wstring lower = L\textcolor{stringliteral}{"{}абвгдеёжзийклмнопрстуфхцчшщъыьэюя"{}};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00134}00134     std::wstring upper = L\textcolor{stringliteral}{"{}АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"{}};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00135}00135     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00136}00136     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < result.size(); i++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00137}00137         \textcolor{keywordtype}{size\_t} pos = lower.find(result[i]);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00138}00138         \textcolor{keywordflow}{if} (pos != std::wstring::npos) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00139}00139             result[i] = upper[pos];}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00140}00140         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00141}00141     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00142}00142     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00143}00143     \textcolor{comment}{// Удаляем пробелы из результата}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00144}00144     result.erase(std::remove(result.begin(), result.end(), L\textcolor{charliteral}{' '}), result.end());}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00145}00145     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00146}00146     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00147}00147 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00154}00154 \textcolor{keywordtype}{bool} modAlphaCipher::isValid(\textcolor{keyword}{const} std::wstring\& s)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00155}00155 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00156}00156     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{wchar\_t} c : s) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00157}00157         \textcolor{keywordflow}{if} (alphaNum.find(c) == alphaNum.end()) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00158}00158             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00159}00159         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00160}00160     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00161}00161     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00162}00162 \}}
+
+\end{DoxyCode}

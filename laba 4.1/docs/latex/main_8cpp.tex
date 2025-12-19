@@ -1,0 +1,141 @@
+\hypertarget{main_8cpp}{}\doxysection{Файл main.\+cpp}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Главный файл программы шифрования Гронсвельда  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$locale$>$}\newline
+{\ttfamily \#include $<$codecvt$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include \char`\"{}mod\+Alpha\+Cipher.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+std\+::wstring \mbox{\hyperlink{main_8cpp_ad612e1d5a3738c231a1aeefb21c4d36d}{string\+\_\+to\+\_\+wstring}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Преобразует string в wstring. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{main_8cpp_a9e8d9796b27a47431c88a5387b1ed2a0}{wstring\+\_\+to\+\_\+string}} (const std\+::wstring \&wstr)
+\begin{DoxyCompactList}\small\item\em Преобразует wstring в string. \end{DoxyCompactList}\item 
+std\+::wstring \mbox{\hyperlink{main_8cpp_ac02113572caf5728d47288b7f9788bbc}{remove\+\_\+spaces}} (const std\+::wstring \&str)
+\begin{DoxyCompactList}\small\item\em Удаляет пробелы из строки \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Главная функция программы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Главный файл программы шифрования Гронсвельда 
+
+Содержит точку входа в программу и пользовательский интерфейс 
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Главная функция программы 
+
+\begin{DoxyReturn}{Возвращает}
+Код завершения программы (0 -\/ успешно, 1 -\/ ошибка)
+\end{DoxyReturn}
+Программа предоставляет интерактивный интерфейс для\+:
+\begin{DoxyEnumerate}
+\item Ввода ключа шифрования
+\item Выбора операции (шифрование/дешифрование)
+\item Ввода текста для обработки
+\item Вывода результата 
+\end{DoxyEnumerate}
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00055}{55}}
+
+
+
+Перекрестные ссылки \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00075}{mod\+Alpha\+Cipher\+::decrypt()}}, \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00048}{mod\+Alpha\+Cipher\+::encrypt()}} и \mbox{\hyperlink{main_8cpp_source_l00039}{remove\+\_\+spaces()}}.
+
+\mbox{\Hypertarget{main_8cpp_ac02113572caf5728d47288b7f9788bbc}\label{main_8cpp_ac02113572caf5728d47288b7f9788bbc}} 
+\index{main.cpp@{main.cpp}!remove\_spaces@{remove\_spaces}}
+\index{remove\_spaces@{remove\_spaces}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{remove\_spaces()}{remove\_spaces()}}
+{\footnotesize\ttfamily std\+::wstring remove\+\_\+spaces (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Удаляет пробелы из строки 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em str} & Входная строка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Строка без пробелов 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00039}{39}}
+
+
+
+Используется в \mbox{\hyperlink{main_8cpp_source_l00055}{main()}}.
+
+\mbox{\Hypertarget{main_8cpp_ad612e1d5a3738c231a1aeefb21c4d36d}\label{main_8cpp_ad612e1d5a3738c231a1aeefb21c4d36d}} 
+\index{main.cpp@{main.cpp}!string\_to\_wstring@{string\_to\_wstring}}
+\index{string\_to\_wstring@{string\_to\_wstring}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{string\_to\_wstring()}{string\_to\_wstring()}}
+{\footnotesize\ttfamily std\+::wstring string\+\_\+to\+\_\+wstring (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Преобразует string в wstring. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em str} & Строка для преобразования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Широкая строка (wstring) 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00019}{19}}
+
+\mbox{\Hypertarget{main_8cpp_a9e8d9796b27a47431c88a5387b1ed2a0}\label{main_8cpp_a9e8d9796b27a47431c88a5387b1ed2a0}} 
+\index{main.cpp@{main.cpp}!wstring\_to\_string@{wstring\_to\_string}}
+\index{wstring\_to\_string@{wstring\_to\_string}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{wstring\_to\_string()}{wstring\_to\_string()}}
+{\footnotesize\ttfamily std\+::string wstring\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{wstr }\end{DoxyParamCaption})}
+
+
+
+Преобразует wstring в string. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em wstr} & Широкая строка для преобразования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Обычная строка (string) 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00029}{29}}
+

@@ -1,0 +1,42 @@
+\begin{theindex}
+
+  \item {decrypt}
+    \subitem {modAlphaCipher}, \hyperpage{6}
+
+  \indexspace
+
+  \item {encrypt}
+    \subitem {modAlphaCipher}, \hyperpage{7}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{10}
+  \item {main.cpp}, \hyperpage{9}
+    \subitem {main}, \hyperpage{10}
+    \subitem {remove\_spaces}, \hyperpage{10}
+    \subitem {string\_to\_wstring}, \hyperpage{11}
+    \subitem {wstring\_to\_string}, \hyperpage{11}
+  \item {modAlphaCipher}, \hyperpage{5}
+    \subitem {decrypt}, \hyperpage{6}
+    \subitem {encrypt}, \hyperpage{7}
+    \subitem {modAlphaCipher}, \hyperpage{5, 6}
+  \item {modAlphaCipher.cpp}, \hyperpage{13}
+  \item {modAlphaCipher.h}, \hyperpage{14}
+
+  \indexspace
+
+  \item {remove\_spaces}
+    \subitem {main.cpp}, \hyperpage{10}
+
+  \indexspace
+
+  \item {string\_to\_wstring}
+    \subitem {main.cpp}, \hyperpage{11}
+
+  \indexspace
+
+  \item {wstring\_to\_string}
+    \subitem {main.cpp}, \hyperpage{11}
+
+\end{theindex}

@@ -1,0 +1,106 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\mbox{\hyperlink{main_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <locale>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include <limits>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mod_alpha_cipher_8h}{modAlphaCipher.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}\mbox{\hyperlink{main_8cpp_a8491b47f8b7429428316b35872ef1542}{00026}} \textcolor{keywordtype}{string} \mbox{\hyperlink{main_8cpp_a8491b47f8b7429428316b35872ef1542}{removeSpaces}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& str) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027     \textcolor{keywordtype}{string} result = str;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028     result.erase(remove(result.begin(), result.end(), \textcolor{charliteral}{' '}), result.end());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00045}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}() \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047     \textcolor{keywordtype}{int} key;           }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048     \textcolor{keywordtype}{string} text;       }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049     \textcolor{keywordtype}{int} operation;     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051     cout << \textcolor{stringliteral}{"{}Шифратор готов к работе!"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053     \textcolor{comment}{// Ввод ключа}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054     \textcolor{keywordflow}{while} (\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055         cout << \textcolor{stringliteral}{"{}Введите ключ (положительное число): "{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056         cin >> key;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058         \textcolor{keywordflow}{if} (cin.fail()) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059             \textcolor{comment}{// Если ввод не удался (буква вместо числа)}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060             cin.clear(); \textcolor{comment}{// Сбрасываем флаг ошибки}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061             cin.ignore(numeric\_limits<streamsize>::max(), \textcolor{charliteral}{'\(\backslash\)n'}); \textcolor{comment}{// Очищаем буфер}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062             cout << \textcolor{stringliteral}{"{}Ошибка: Ключ должен быть числом!"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (key <= 0) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064             cin.ignore(numeric\_limits<streamsize>::max(), \textcolor{charliteral}{'\(\backslash\)n'}); \textcolor{comment}{// Очищаем буфер}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065             cout << \textcolor{stringliteral}{"{}Ошибка: Ключ должен быть положительным числом!"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067             cin.ignore(numeric\_limits<streamsize>::max(), \textcolor{charliteral}{'\(\backslash\)n'}); \textcolor{comment}{// Очищаем буфер}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073         \textcolor{comment}{// Создаем объект шифратора}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074         \mbox{\hyperlink{classmod_alpha_cipher}{modAlphaCipher}} cipher(key);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075         cout << \textcolor{stringliteral}{"{}Создан шифратор с ключом: "{}} << cipher.\mbox{\hyperlink{classmod_alpha_cipher_a27ab9dbd167b1de8ca226c9d364d609e}{getKey}}() << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077         \textcolor{comment}{// Главный цикл программы}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079             cout << \textcolor{stringliteral}{"{}\(\backslash\)nВыберите операцию:"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080             cout << \textcolor{stringliteral}{"{}1 -\/ Зашифровать текст"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081             cout << \textcolor{stringliteral}{"{}2 -\/ Расшифровать текст"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082             cout << \textcolor{stringliteral}{"{}0 -\/ Выход"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083             cout << \textcolor{stringliteral}{"{}Ваш выбор: "{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084             cin >> operation;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085             }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086             \textcolor{keywordflow}{if} (cin.fail()) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087                 cin.clear();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088                 cin.ignore(numeric\_limits<streamsize>::max(), \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089                 operation = -\/1; \textcolor{comment}{// Устанавливаем неверную операцию}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091                 cin.ignore(numeric\_limits<streamsize>::max(), \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092             \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093             }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094             \textcolor{keywordflow}{if} (operation == 1 || operation == 2) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095                 cout << \textcolor{stringliteral}{"{}Введите текст(только на английском): "{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096                 getline(cin, text);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097                 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098                 \textcolor{comment}{// Удаляем пробелы из введенного текста}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099                 \textcolor{keywordtype}{string} textWithoutSpaces = \mbox{\hyperlink{main_8cpp_a8491b47f8b7429428316b35872ef1542}{removeSpaces}}(text);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100                 cout << \textcolor{stringliteral}{"{}Текст без пробелов: "{}} << textWithoutSpaces << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101                 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102                 \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103                     \textcolor{keywordflow}{if} (operation == 1) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104                         \textcolor{comment}{// Шифрование}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105                         \textcolor{keywordtype}{string} encrypted = cipher.\mbox{\hyperlink{classmod_alpha_cipher_aa2572d3284d78a80e17ae8db27862797}{encrypt}}(textWithoutSpaces);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106                         cout << \textcolor{stringliteral}{"{}Зашифрованный текст: "{}} << encrypted << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107                     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108                         \textcolor{comment}{// Дешифрование}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109                         \textcolor{keywordtype}{string} decrypted = cipher.\mbox{\hyperlink{classmod_alpha_cipher_a0f616215d9c4faaf7f4d9ff16ad4d435}{decrypt}}(textWithoutSpaces);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110                         cout << \textcolor{stringliteral}{"{}Расшифрованный текст: "{}} << decrypted << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111                     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112                 \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113                     cout << \textcolor{stringliteral}{"{}Ошибка при обработке: "{}} << e.what() << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114                 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (operation != 0) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116                 cout << \textcolor{stringliteral}{"{}Неверная операция! Попробуйте снова."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117             \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118             }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119         \} \textcolor{keywordflow}{while} (operation != 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121         cout << \textcolor{stringliteral}{"{}Выход из программы."{}} << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124         cout << \textcolor{stringliteral}{"{}Ошибка инициализации: "{}} << e.what() << endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129 \}}
+
+\end{DoxyCode}

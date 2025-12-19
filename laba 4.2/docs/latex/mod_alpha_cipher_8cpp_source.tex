@@ -1,0 +1,137 @@
+\hypertarget{mod_alpha_cipher_8cpp_source}{}\doxysection{mod\+Alpha\+Cipher.\+cpp}
+\mbox{\hyperlink{mod_alpha_cipher_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mod_alpha_cipher_8h}{modAlphaCipher.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <cctype>}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00010}00010 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00017}\mbox{\hyperlink{classmod_alpha_cipher_ac84120bb08dc9943ffccd7111cce2870}{00017}} \mbox{\hyperlink{classmod_alpha_cipher_a4f0a86c20f5d836f66cb1e640d875e6b}{modAlphaCipher::modAlphaCipher}}(\textcolor{keywordtype}{int} k)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00019}00019     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classmod_alpha_cipher_a13507d0dedb7fc4fbf0e44836b96b480}{isValidKey}}(k)) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00020}00020         \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Неверный ключ. Ключ должен быть положительным числом."{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00021}00021     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00022}00022     \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}} = k;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00023}00023 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00034}\mbox{\hyperlink{classmod_alpha_cipher_aa2572d3284d78a80e17ae8db27862797}{00034}} \textcolor{keywordtype}{string} \mbox{\hyperlink{classmod_alpha_cipher_aa2572d3284d78a80e17ae8db27862797}{modAlphaCipher::encrypt}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& plain\_text)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00035}00035 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00036}00036     \textcolor{keywordflow}{if} (plain\_text.empty()) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00037}00037         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00039}00039     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00040}00040     \textcolor{comment}{// Проверяем и преобразуем в верхний регистр}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00041}00041     \textcolor{keywordtype}{string} upper\_text;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00042}00042     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{char} c : plain\_text) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00043}00043         \textcolor{keywordflow}{if} (isalpha(c)) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00044}00044             \textcolor{keywordflow}{if} ((c >= \textcolor{charliteral}{'A'} \&\& c <= \textcolor{charliteral}{'Z'}) || (c >= \textcolor{charliteral}{'a'} \&\& c <= \textcolor{charliteral}{'z'})) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00045}00045                 upper\_text += toupper(c);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00046}00046             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00047}00047                 \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Текст содержит неанглийские символы."{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00048}00048             \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00049}00049         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00050}00050             \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Текст содержит небуквенные символы."{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00051}00051         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00052}00052     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00053}00053     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00054}00054     \textcolor{keywordtype}{string} text = upper\_text;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00055}00055     \textcolor{keywordtype}{size\_t} text\_len = text.length();}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00056}00056     \textcolor{keywordtype}{size\_t} rows = (text\_len + \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}} -\/ 1) / \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00057}00057     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00058}00058     \textcolor{comment}{// Создаем таблицу}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00059}00059     vector<vector<char>> table(rows, vector<char>(\mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}}, \textcolor{charliteral}{' '}));}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00060}00060     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00061}00061     \textcolor{comment}{// Запись по строкам}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00062}00062     \textcolor{keywordtype}{size\_t} pos = 0;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00063}00063     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < rows; i++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00064}00064         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}}; j++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00065}00065             \textcolor{keywordflow}{if} (pos < text\_len) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00066}00066                 table[i][j] = text[pos++];}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00067}00067             \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00068}00068         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00069}00069     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00070}00070     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00071}00071     \textcolor{comment}{// Чтение по столбцам справа налево}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00072}00072     \textcolor{keywordtype}{string} result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00073}00073     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}} -\/ 1; j >= 0; j-\/-\/) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00074}00074         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < rows; i++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00075}00075             \textcolor{keywordflow}{if} (table[i][j] != \textcolor{charliteral}{' '}) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00076}00076                 result += table[i][j];}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00077}00077             \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00078}00078         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00079}00079     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00080}00080     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00081}00081     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00082}00082 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00093}\mbox{\hyperlink{classmod_alpha_cipher_a0f616215d9c4faaf7f4d9ff16ad4d435}{00093}} \textcolor{keywordtype}{string} \mbox{\hyperlink{classmod_alpha_cipher_a0f616215d9c4faaf7f4d9ff16ad4d435}{modAlphaCipher::decrypt}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& cipher\_text)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00094}00094 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00095}00095     \textcolor{keywordflow}{if} (cipher\_text.empty()) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00096}00096         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00097}00097     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00098}00098     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00099}00099     \textcolor{comment}{// Проверяем и преобразуем в верхний регистр}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00100}00100     \textcolor{keywordtype}{string} upper\_text;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00101}00101     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{char} c : cipher\_text) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00102}00102         \textcolor{keywordflow}{if} (isalpha(c)) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00103}00103             \textcolor{keywordflow}{if} ((c >= \textcolor{charliteral}{'A'} \&\& c <= \textcolor{charliteral}{'Z'}) || (c >= \textcolor{charliteral}{'a'} \&\& c <= \textcolor{charliteral}{'z'})) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00104}00104                 upper\_text += toupper(c);}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00105}00105             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00106}00106                 \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Текст содержит неанглийские символы."{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00107}00107             \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00108}00108         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00109}00109             \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Текст содержит небуквенные символы."{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00110}00110         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00111}00111     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00112}00112     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00113}00113     \textcolor{keywordtype}{string} text = upper\_text;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00114}00114     \textcolor{keywordtype}{size\_t} text\_len = text.length();}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00115}00115     \textcolor{keywordtype}{size\_t} rows = (text\_len + \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}} -\/ 1) / \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00116}00116     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00117}00117     \textcolor{comment}{// Создаем таблицу}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00118}00118     vector<vector<char>> table(rows, vector<char>(\mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}}, \textcolor{charliteral}{' '}));}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00119}00119     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00120}00120     \textcolor{comment}{// Запись по столбцам справа налево}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00121}00121     \textcolor{keywordtype}{size\_t} pos = 0;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00122}00122     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}} -\/ 1; j >= 0; j-\/-\/) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00123}00123         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < rows; i++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00124}00124             \textcolor{keywordflow}{if} (pos < text\_len) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00125}00125                 table[i][j] = text[pos++];}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00126}00126             \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00127}00127         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00128}00128     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00129}00129     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00130}00130     \textcolor{comment}{// Чтение по строкам}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00131}00131     \textcolor{keywordtype}{string} result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00132}00132     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < rows; i++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00133}00133         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}}; j++) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00134}00134             \textcolor{keywordflow}{if} (table[i][j] != \textcolor{charliteral}{' '}) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00135}00135                 result += table[i][j];}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00136}00136             \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00137}00137         \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00138}00138     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00139}00139     }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00140}00140     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00141}00141 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00148}\mbox{\hyperlink{classmod_alpha_cipher_a13507d0dedb7fc4fbf0e44836b96b480}{00148}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classmod_alpha_cipher_a13507d0dedb7fc4fbf0e44836b96b480}{modAlphaCipher::isValidKey}}(\textcolor{keywordtype}{int} key)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00149}00149 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00150}00150     \textcolor{keywordflow}{return} \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}} > 0;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00151}00151 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00158}\mbox{\hyperlink{classmod_alpha_cipher_a79dcb8afc98fe7e9d3c64932bc2c57fb}{00158}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classmod_alpha_cipher_a79dcb8afc98fe7e9d3c64932bc2c57fb}{modAlphaCipher::setKey}}(\textcolor{keywordtype}{int} k)}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00159}00159 \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00160}00160     \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classmod_alpha_cipher_a13507d0dedb7fc4fbf0e44836b96b480}{isValidKey}}(k)) \{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00161}00161         \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Неверный ключ. Ключ должен быть положительным числом."{}});}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00162}00162     \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00163}00163     \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}} = k;}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00164}00164 \}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00170}\mbox{\hyperlink{classmod_alpha_cipher_a27ab9dbd167b1de8ca226c9d364d609e}{00170}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classmod_alpha_cipher_a27ab9dbd167b1de8ca226c9d364d609e}{modAlphaCipher::getKey}}()\textcolor{keyword}{ const}}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00171}00171 \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00172}00172     \textcolor{keywordflow}{return} \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}};}
+\DoxyCodeLine{\Hypertarget{mod_alpha_cipher_8cpp_source_l00173}00173 \}}
+
+\end{DoxyCode}

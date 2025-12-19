@@ -1,0 +1,93 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\mbox{\hyperlink{main_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <locale>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <codecvt>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{mod_alpha_cipher_8h}{modAlphaCipher.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}\mbox{\hyperlink{main_8cpp_ad612e1d5a3738c231a1aeefb21c4d36d}{00019}} std::wstring \mbox{\hyperlink{main_8cpp_ad612e1d5a3738c231a1aeefb21c4d36d}{string\_to\_wstring}}(\textcolor{keyword}{const} std::string\& str) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020     std::wstring\_convert<std::codecvt\_utf8<wchar\_t>> converter;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021     \textcolor{keywordflow}{return} converter.from\_bytes(str);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}\mbox{\hyperlink{main_8cpp_a9e8d9796b27a47431c88a5387b1ed2a0}{00029}} std::string \mbox{\hyperlink{main_8cpp_a9e8d9796b27a47431c88a5387b1ed2a0}{wstring\_to\_string}}(\textcolor{keyword}{const} std::wstring\& wstr) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030     std::wstring\_convert<std::codecvt\_utf8<wchar\_t>> converter;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031     \textcolor{keywordflow}{return} converter.to\_bytes(wstr);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}\mbox{\hyperlink{main_8cpp_ac02113572caf5728d47288b7f9788bbc}{00039}} std::wstring \mbox{\hyperlink{main_8cpp_ac02113572caf5728d47288b7f9788bbc}{remove\_spaces}}(\textcolor{keyword}{const} std::wstring\& str) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040     std::wstring result = str;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041     result.erase(std::remove(result.begin(), result.end(), L\textcolor{charliteral}{' '}), result.end());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}\mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{00055}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056 \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057     \textcolor{comment}{// Устанавливаем локаль}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059         std::locale::global(std::locale(\textcolor{stringliteral}{"{}ru\_RU.UTF-\/8"{}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061         std::cout << \textcolor{stringliteral}{"{}Не удалось установить локаль: "{}} << e.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062         std::cout << \textcolor{stringliteral}{"{}Продолжаем без локали..."{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065     std::wcout.imbue(std::locale());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066     std::wcin.imbue(std::locale());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068     std::wstring key;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069     std::wstring text;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070     \textcolor{keywordtype}{int} op;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072     std::wcout << L\textcolor{stringliteral}{"{}Шифратор готов. Введите ключ (только русские буквы): "{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073     std::getline(std::wcin, key);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075     \textcolor{comment}{// Удаляем пробелы из ключа}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076     key = \mbox{\hyperlink{main_8cpp_ac02113572caf5728d47288b7f9788bbc}{remove\_spaces}}(key);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079         \mbox{\hyperlink{classmod_alpha_cipher}{modAlphaCipher}} cipher(key);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080         std::wcout << L\textcolor{stringliteral}{"{}Ключ загружен успешно."{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082         \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083             std::wcout << L\textcolor{stringliteral}{"{}\(\backslash\)nВыберите операцию (0-\/выход, 1-\/зашифровать, 2-\/расшифровать): "{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084             std::wcin >> op;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085             std::wcin.ignore(); \textcolor{comment}{// Очищаем буфер}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086             }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087             \textcolor{keywordflow}{if} (op > 2) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088                 std::wcout << L\textcolor{stringliteral}{"{}Неверная операция!"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (op > 0) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090                 std::wcout << L\textcolor{stringliteral}{"{}Введите текст (только русские буквы): "{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091                 std::getline(std::wcin, text);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092                 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093                 \textcolor{comment}{// Удаляем пробелы из текста}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094                 text = \mbox{\hyperlink{main_8cpp_ac02113572caf5728d47288b7f9788bbc}{remove\_spaces}}(text);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095                 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096                 \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097                     \textcolor{keywordflow}{if} (op == 1) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098                         std::wstring encrypted = cipher.\mbox{\hyperlink{classmod_alpha_cipher_a5edc499881373a275a3cd14f0cab6c19}{encrypt}}(text);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099                         std::wcout << L\textcolor{stringliteral}{"{}Зашифрованный текст: "{}} << encrypted << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100                     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101                         std::wstring decrypted = cipher.\mbox{\hyperlink{classmod_alpha_cipher_a941eab79d9ec1a8de4e1f9cf2a80ff35}{decrypt}}(text);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102                         std::wcout << L\textcolor{stringliteral}{"{}Расшифрованный текст: "{}} << decrypted << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103                     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104                 \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105                     std::wcout << L\textcolor{stringliteral}{"{}Ошибка при обработке: "{}} << e.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106                 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107             \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108         \} \textcolor{keywordflow}{while} (op != 0);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111         std::wcout << L\textcolor{stringliteral}{"{}Ошибка инициализации: "{}} << e.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112         std::wcout << L\textcolor{stringliteral}{"{}Пожалуйста, используйте только русские буквы."{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116     std::wcout << L\textcolor{stringliteral}{"{}Выход из программы."{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118 \}}
+
+\end{DoxyCode}

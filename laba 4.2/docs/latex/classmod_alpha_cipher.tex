@@ -1,0 +1,324 @@
+\hypertarget{classmod_alpha_cipher}{}\doxysection{Класс mod\+Alpha\+Cipher}
+\label{classmod_alpha_cipher}\index{modAlphaCipher@{modAlphaCipher}}
+
+
+Класс для шифрования и дешифрования методом маршрутной перестановки  
+
+
+
+
+{\ttfamily \#include $<$mod\+Alpha\+Cipher.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classmod_alpha_cipher_a4f0a86c20f5d836f66cb1e640d875e6b}{mod\+Alpha\+Cipher}} ()=delete
+\begin{DoxyCompactList}\small\item\em Удаленный конструктор по умолчанию \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classmod_alpha_cipher_ac84120bb08dc9943ffccd7111cce2870}{mod\+Alpha\+Cipher}} (int k)
+\begin{DoxyCompactList}\small\item\em Конструктор с параметром \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classmod_alpha_cipher_aa2572d3284d78a80e17ae8db27862797}{encrypt}} (const std\+::string \&plain\+\_\+text)
+\begin{DoxyCompactList}\small\item\em Шифрует текст методом маршрутной перестановки \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classmod_alpha_cipher_a0f616215d9c4faaf7f4d9ff16ad4d435}{decrypt}} (const std\+::string \&cipher\+\_\+text)
+\begin{DoxyCompactList}\small\item\em Дешифрует текст методом маршрутной перестановки \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classmod_alpha_cipher_a79dcb8afc98fe7e9d3c64932bc2c57fb}{set\+Key}} (int k)
+\begin{DoxyCompactList}\small\item\em Устанавливает новый ключ шифрования \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classmod_alpha_cipher_a27ab9dbd167b1de8ca226c9d364d609e}{get\+Key}} () const
+\begin{DoxyCompactList}\small\item\em Возвращает текущий ключ шифрования \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classmod_alpha_cipher_a13507d0dedb7fc4fbf0e44836b96b480}{is\+Valid\+Key}} (int \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}})
+\begin{DoxyCompactList}\small\item\em Проверяет валидность ключа \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}{key}}
+\begin{DoxyCompactList}\small\item\em Количество столбцов в таблице перестановки \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для шифрования и дешифрования методом маршрутной перестановки 
+
+Класс реализует алгоритм маршрутной перестановки\+:
+\begin{DoxyEnumerate}
+\item Текст записывается в таблицу по строкам
+\item Чтение осуществляется по столбцам справа налево
+\item Дешифрование -\/ обратный процесс 
+\end{DoxyEnumerate}
+
+См. определение в файле \mbox{\hyperlink{mod_alpha_cipher_8h_source}{mod\+Alpha\+Cipher.\+h}} строка \mbox{\hyperlink{mod_alpha_cipher_8h_source_l00023}{23}}
+
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classmod_alpha_cipher_a4f0a86c20f5d836f66cb1e640d875e6b}\label{classmod_alpha_cipher_a4f0a86c20f5d836f66cb1e640d875e6b}} 
+\index{modAlphaCipher@{modAlphaCipher}!modAlphaCipher@{modAlphaCipher}}
+\index{modAlphaCipher@{modAlphaCipher}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{modAlphaCipher()}{modAlphaCipher()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily mod\+Alpha\+Cipher\+::mod\+Alpha\+Cipher (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Удаленный конструктор по умолчанию 
+
+\mbox{\Hypertarget{classmod_alpha_cipher_ac84120bb08dc9943ffccd7111cce2870}\label{classmod_alpha_cipher_ac84120bb08dc9943ffccd7111cce2870}} 
+\index{modAlphaCipher@{modAlphaCipher}!modAlphaCipher@{modAlphaCipher}}
+\index{modAlphaCipher@{modAlphaCipher}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{modAlphaCipher()}{modAlphaCipher()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily mod\+Alpha\+Cipher\+::mod\+Alpha\+Cipher (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Конструктор с параметром 
+
+Конструктор класса
+
+
+\begin{DoxyParams}{Аргументы}
+{\em k} & Ключ шифрования (количество столбцов) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & если ключ невалидный\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em k} & Ключ шифрования \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & если ключ невалидный \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{mod_alpha_cipher_8cpp_source}{mod\+Alpha\+Cipher.\+cpp}} строка \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00017}{17}}
+
+
+
+Перекрестные ссылки \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00148}{is\+Valid\+Key()}} и \mbox{\hyperlink{mod_alpha_cipher_8h_source_l00026}{key}}.
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classmod_alpha_cipher_a0f616215d9c4faaf7f4d9ff16ad4d435}\label{classmod_alpha_cipher_a0f616215d9c4faaf7f4d9ff16ad4d435}} 
+\index{modAlphaCipher@{modAlphaCipher}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{decrypt()}{decrypt()}}
+{\footnotesize\ttfamily string mod\+Alpha\+Cipher\+::decrypt (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{cipher\+\_\+text }\end{DoxyParamCaption})}
+
+
+
+Дешифрует текст методом маршрутной перестановки 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em cipher\+\_\+text} & Текст для дешифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Расшифрованная строка 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & если текст содержит недопустимые символы\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em cipher\+\_\+text} & Текст для дешифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Расшифрованная строка
+\end{DoxyReturn}
+Алгоритм обратен шифрованию\+:
+\begin{DoxyEnumerate}
+\item Проверка и преобразование текста
+\item Запись текста в таблицу по столбцам справа налево
+\item Чтение таблицы по строкам 
+\end{DoxyEnumerate}
+
+См. определение в файле \mbox{\hyperlink{mod_alpha_cipher_8cpp_source}{mod\+Alpha\+Cipher.\+cpp}} строка \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00093}{93}}
+
+
+
+Перекрестные ссылки \mbox{\hyperlink{mod_alpha_cipher_8h_source_l00026}{key}}.
+
+
+
+Используется в \mbox{\hyperlink{main_8cpp_source_l00045}{main()}}.
+
+\mbox{\Hypertarget{classmod_alpha_cipher_aa2572d3284d78a80e17ae8db27862797}\label{classmod_alpha_cipher_aa2572d3284d78a80e17ae8db27862797}} 
+\index{modAlphaCipher@{modAlphaCipher}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{encrypt()}{encrypt()}}
+{\footnotesize\ttfamily string mod\+Alpha\+Cipher\+::encrypt (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{plain\+\_\+text }\end{DoxyParamCaption})}
+
+
+
+Шифрует текст методом маршрутной перестановки 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em plain\+\_\+text} & Текст для шифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Зашифрованная строка 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & если текст содержит недопустимые символы\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em plain\+\_\+text} & Текст для шифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Зашифрованная строка
+\end{DoxyReturn}
+Алгоритм\+:
+\begin{DoxyEnumerate}
+\item Проверка и преобразование текста
+\item Запись текста в таблицу по строкам
+\item Чтение таблицы по столбцам справа налево 
+\end{DoxyEnumerate}
+
+См. определение в файле \mbox{\hyperlink{mod_alpha_cipher_8cpp_source}{mod\+Alpha\+Cipher.\+cpp}} строка \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00034}{34}}
+
+
+
+Перекрестные ссылки \mbox{\hyperlink{mod_alpha_cipher_8h_source_l00026}{key}}.
+
+
+
+Используется в \mbox{\hyperlink{main_8cpp_source_l00045}{main()}}.
+
+\mbox{\Hypertarget{classmod_alpha_cipher_a27ab9dbd167b1de8ca226c9d364d609e}\label{classmod_alpha_cipher_a27ab9dbd167b1de8ca226c9d364d609e}} 
+\index{modAlphaCipher@{modAlphaCipher}!getKey@{getKey}}
+\index{getKey@{getKey}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{getKey()}{getKey()}}
+{\footnotesize\ttfamily int mod\+Alpha\+Cipher\+::get\+Key (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Возвращает текущий ключ шифрования 
+
+Возвращает текущий ключ
+
+\begin{DoxyReturn}{Возвращает}
+Текущий ключ 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{mod_alpha_cipher_8cpp_source}{mod\+Alpha\+Cipher.\+cpp}} строка \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00170}{170}}
+
+
+
+Перекрестные ссылки \mbox{\hyperlink{mod_alpha_cipher_8h_source_l00026}{key}}.
+
+
+
+Используется в \mbox{\hyperlink{main_8cpp_source_l00045}{main()}}.
+
+\mbox{\Hypertarget{classmod_alpha_cipher_a13507d0dedb7fc4fbf0e44836b96b480}\label{classmod_alpha_cipher_a13507d0dedb7fc4fbf0e44836b96b480}} 
+\index{modAlphaCipher@{modAlphaCipher}!isValidKey@{isValidKey}}
+\index{isValidKey@{isValidKey}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{isValidKey()}{isValidKey()}}
+{\footnotesize\ttfamily bool mod\+Alpha\+Cipher\+::is\+Valid\+Key (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Проверяет валидность ключа 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em key} & Ключ для проверки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если ключ положительный, false в противном случае
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Аргументы}
+{\em key} & Ключ для проверки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true если ключ положительный 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{mod_alpha_cipher_8cpp_source}{mod\+Alpha\+Cipher.\+cpp}} строка \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00148}{148}}
+
+
+
+Перекрестные ссылки \mbox{\hyperlink{mod_alpha_cipher_8h_source_l00026}{key}}.
+
+
+
+Используется в \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00017}{mod\+Alpha\+Cipher()}} и \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00158}{set\+Key()}}.
+
+\mbox{\Hypertarget{classmod_alpha_cipher_a79dcb8afc98fe7e9d3c64932bc2c57fb}\label{classmod_alpha_cipher_a79dcb8afc98fe7e9d3c64932bc2c57fb}} 
+\index{modAlphaCipher@{modAlphaCipher}!setKey@{setKey}}
+\index{setKey@{setKey}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{setKey()}{setKey()}}
+{\footnotesize\ttfamily void mod\+Alpha\+Cipher\+::set\+Key (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Устанавливает новый ключ шифрования 
+
+Устанавливает новый ключ
+
+
+\begin{DoxyParams}{Аргументы}
+{\em k} & Новый ключ \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::invalid\+\_\+argument} & если ключ невалидный \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{mod_alpha_cipher_8cpp_source}{mod\+Alpha\+Cipher.\+cpp}} строка \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00158}{158}}
+
+
+
+Перекрестные ссылки \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00148}{is\+Valid\+Key()}} и \mbox{\hyperlink{mod_alpha_cipher_8h_source_l00026}{key}}.
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}\label{classmod_alpha_cipher_aa7bba91671e2f0edd83f11ed218dd555}} 
+\index{modAlphaCipher@{modAlphaCipher}!key@{key}}
+\index{key@{key}!modAlphaCipher@{modAlphaCipher}}
+\doxysubsubsection{\texorpdfstring{key}{key}}
+{\footnotesize\ttfamily int mod\+Alpha\+Cipher\+::key\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Количество столбцов в таблице перестановки 
+
+
+
+См. определение в файле \mbox{\hyperlink{mod_alpha_cipher_8h_source}{mod\+Alpha\+Cipher.\+h}} строка \mbox{\hyperlink{mod_alpha_cipher_8h_source_l00026}{26}}
+
+
+
+Используется в \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00093}{decrypt()}}, \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00034}{encrypt()}}, \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00170}{get\+Key()}}, \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00148}{is\+Valid\+Key()}}, \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00017}{mod\+Alpha\+Cipher()}} и \mbox{\hyperlink{mod_alpha_cipher_8cpp_source_l00158}{set\+Key()}}.
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{mod_alpha_cipher_8h}{mod\+Alpha\+Cipher.\+h}}\item 
+\mbox{\hyperlink{mod_alpha_cipher_8cpp}{mod\+Alpha\+Cipher.\+cpp}}\end{DoxyCompactItemize}
