@@ -1,0 +1,48 @@
+# Makefile для модульного тестирования
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra -O2 -g
+LDFLAGS = 
+
+TEST_TARGET = test_modAlphaCipher
+TEST_SOURCE = test_modAlphaCipher.cpp
+TEST_OBJ = $(TEST_SOURCE:.cpp=.o)
+
+SRC_FILES = modAlphaCipher.cpp
+SRC_OBJS = $(SRC_FILES:.cpp=.o)
+
+HEADERS = modAlphaCipher.h
+
+.PHONY: all test clean run
+
+all: $(TEST_TARGET)
+
+$(TEST_TARGET): $(TEST_OBJ) $(SRC_OBJS)
+	$(CXX) $(TEST_OBJ) $(SRC_OBJS) -o $(TEST_TARGET) $(LDFLAGS)
+
+$(TEST_OBJ): $(TEST_SOURCE) $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+modAlphaCipher.o: modAlphaCipher.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+test: $(TEST_TARGET)
+	@echo "========================================"
+	@echo "   UNIT TESTING: ROUTE TRANSPOSITION"
+	@echo "========================================"
+	./$(TEST_TARGET)
+
+clean:
+	rm -f $(TEST_OBJ) $(SRC_OBJS) $(TEST_TARGET) *.o
+
+run: $(TEST_TARGET)
+	./$(TEST_TARGET)
+
+debug: CXXFLAGS += -DDEBUG
+debug: clean $(TEST_TARGET)
+
+help:
+	@echo "Available commands:"
+	@echo "  make test   - build and run tests"
+	@echo "  make clean  - clean build files"
+	@echo "  make run    - run tests"
+	@echo "  make debug  - build with debug info"

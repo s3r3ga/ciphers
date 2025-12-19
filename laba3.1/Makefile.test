@@ -1,0 +1,46 @@
+# Makefile.test - для модульного тестирования
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -Wextra -O2 -g
+LDFLAGS = 
+
+TEST_TARGET = test_modAlphaCipher
+TEST_SOURCE = test_modAlphaCipher.cpp
+TEST_OBJ = $(TEST_SOURCE:.cpp=.o)
+
+SRC_FILES = modAlphaCipher.cpp
+SRC_OBJS = $(SRC_FILES:.cpp=.o)
+
+HEADERS = modAlphaCipher.h
+
+# Правило по умолчанию
+all: $(TEST_TARGET)
+
+# Сборка тестовой программы
+$(TEST_TARGET): $(TEST_OBJ) $(SRC_OBJS)
+	$(CXX) $(TEST_OBJ) $(SRC_OBJS) -o $(TEST_TARGET) $(LDFLAGS)
+
+# Компиляция тестового файла
+$(TEST_OBJ): $(TEST_SOURCE) $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Компиляция исходных файлов
+modAlphaCipher.o: modAlphaCipher.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Запуск тестов
+test: $(TEST_TARGET)
+	@echo "=========================================="
+	@echo "   МОДУЛЬНОЕ ТЕСТИРОВАНИЕ ШИФРА"
+	@echo "=========================================="
+	./$(TEST_TARGET)
+
+# Очистка
+clean:
+	rm -f $(TEST_OBJ) $(SRC_OBJS) $(TEST_TARGET)
+	rm -f *.o *.out 2>/dev/null || true
+
+# Отладочный запуск
+debug: $(TEST_TARGET)
+	gdb -ex run ./$(TEST_TARGET)
+
+.PHONY: all test clean debug
